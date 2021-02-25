@@ -22,7 +22,15 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.ui.PuppyDetailsScreen
 import com.example.androiddevchallenge.ui.PuppyListScreen
+import com.example.androiddevchallenge.ui.PuppyViewModel
+import com.example.androiddevchallenge.ui.core.Routes
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -39,8 +47,27 @@ class MainActivity : AppCompatActivity() {
 // Start building your app here!
 @Composable
 fun MyApp() {
+    val navController = rememberNavController()
+    val viewModel = viewModel<PuppyViewModel>()
+
     Surface(color = MaterialTheme.colors.background) {
-        PuppyListScreen()
+        NavHost(navController = navController, startDestination = Routes.PUPPY_LIST_SCREEN) {
+            composable(Routes.PUPPY_LIST_SCREEN) {
+                PuppyListScreen(
+                    puppies = viewModel.puppies,
+                    onItemClicked = {
+                        viewModel.onPuppyClicked(it)
+                        navController.navigate(Routes.PUPPY_DETAILS_SCREEN)
+                    }
+                )
+            }
+            composable(Routes.PUPPY_DETAILS_SCREEN) {
+                PuppyDetailsScreen(puppy = viewModel.clickedPuppy, onBackPressed = {
+                    navController.popBackStack()
+                })
+            }
+        }
+
     }
 }
 

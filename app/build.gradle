@@ -76,6 +76,7 @@ dependencies {
 
     implementation "dev.chrisbanes.accompanist:accompanist-glide:0.6.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+    implementation "androidx.navigation:navigation-compose:1.0.0-alpha08"
 
     testImplementation 'junit:junit:4.13.2'
 

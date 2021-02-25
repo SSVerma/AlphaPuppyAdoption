@@ -10,7 +10,7 @@ data class Puppy(
     val ageInMonth: Int,
     val lengthInFeet: Float,
     val distanceInMiles: Int,
-    val color: Color,
+    val color: String,
     val imageUrl: String
 )
 

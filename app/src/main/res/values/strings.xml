@@ -18,4 +18,15 @@
     <string name="hello_with_comma">Hello,</string>
     <string name="me">SS Verma</string>
     <string name="welcome_tag_line">Welcome to %s</string>
+    <string name="age_n">Age: %s Months</string>
+    <string name="length_n">Length: %s Feet</string>
+    <string name="color_n">Color: %s</string>
+    <string name="description">Description</string>
+    <string name="doggo_common_description">Dogs are a lot of responsibility - having to make sure
+        they get walked enough… and needing to make plans for
+        them when you want to go out of town, etc…  BUT IT IS SO WORTH IT!
+        Dogs are awesome. No other creature will adore you and be there for
+        you as much as a dog who is loved. Any love and attention you give them
+        is returned tenfold… Especially if you rescued them from a difficult life.</string>
+    <string name="adopt">ADOPT</string>
 </resources>

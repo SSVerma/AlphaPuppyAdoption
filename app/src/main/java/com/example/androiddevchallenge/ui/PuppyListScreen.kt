@@ -18,23 +18,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.core.NetworkImage
-import com.example.androiddevchallenge.ui.data.Gender
+import com.example.androiddevchallenge.ui.core.displayGender
 import com.example.androiddevchallenge.ui.data.Puppy
 
 @Composable
-fun PuppyListScreen() {
-    val viewModel = viewModel<PuppyViewModel>()
+fun PuppyListScreen(puppies: List<Puppy>, onItemClicked: (puppy: Puppy) -> Unit) {
     Column(modifier = Modifier.background(color = MaterialTheme.colors.primaryVariant)) {
         WelcomeSection()
         PuppyList(
-            puppies = viewModel.puppies,
+            puppies = puppies,
             modifier = Modifier.background(
                 color = Color.White,
                 shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
-            )
+            ),
+            onItemClicked = {
+                onItemClicked(it)
+            }
         )
     }
 }
@@ -74,14 +75,18 @@ fun WelcomeSection(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun PuppyList(puppies: List<Puppy>, modifier: Modifier = Modifier) {
+fun PuppyList(
+    puppies: List<Puppy>,
+    onItemClicked: (puppy: Puppy) -> Unit,
+    modifier: Modifier = Modifier
+) {
     LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp),
         content = {
             items(puppies) { puppy ->
                 PuppyItem(puppy = puppy, modifier = Modifier.clickable {
-                    //
+                    onItemClicked(puppy)
                 })
                 Divider()
             }
@@ -143,16 +148,5 @@ fun PuppyInfo(puppy: Puppy) {
                 style = MaterialTheme.typography.caption
             )
         }
-    }
-}
-
-@Composable
-private fun displayGender(gender: Gender): String {
-    return when (gender) {
-        Gender.MALE -> stringResource(id = R.string.gender_n, stringResource(id = R.string.male))
-        Gender.FEMALE -> stringResource(
-            id = R.string.gender_n,
-            stringResource(id = R.string.female)
-        )
     }
 }
