@@ -62,12 +62,14 @@ fun MyApp() {
                 )
             }
             composable(Routes.PUPPY_DETAILS_SCREEN) {
-                PuppyDetailsScreen(puppy = viewModel.clickedPuppy, onBackPressed = {
-                    navController.popBackStack()
-                })
+                PuppyDetailsScreen(
+                    puppy = viewModel.clickedPuppy,
+                    onBackPressed = {
+                        navController.popBackStack()
+                    }
+                )
             }
         }
-
     }
 }
 
