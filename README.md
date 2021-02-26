@@ -1,4 +1,4 @@
-# Put title of your app here
+# DogoPupp
 
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
@@ -14,8 +14,8 @@ The app is build during the Android Dev Challenge for Jetpack Compose.
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
-- App has two screens, list and details of puppy.
-- Both the screens are build using Material Design Principals and have neat User Interface.
+- App has two screens, list and details of puppy and are built using Jetpack Compose.
+- Both the screens follow Material Design Principals and have neat User Interface.
 - App uses recommended navigation pattern to switch from one screen to other.
 - App fetches puppy images from internet using Glide and have fade in animation effect.
 
